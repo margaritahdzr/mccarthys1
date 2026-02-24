@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>McCarthy's Irish Pub — Business Review Enero 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --card: #ffffff;
+    --red: #e8323c;
+    --orange: #ff6b35;
+    --green: #27ae60;
+    --amber: #e67e22;
+    --blue: #2471a3;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5ddd0;
+    --grad: linear-gradient(135deg, #e8323c 0%, #ff6b35 100%);
+    --green-bg: #f0faf4;
+    --red-bg: #fef2f2;
+    --amber-bg: #fffbeb;
+    --blue-bg: #eff6ff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Open Sans',sans-serif; background:var(--bg); color:var(--text); }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--grad);
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+  }
+  .header-shamrock {
+    background: rgba(0,0,0,0.12);
+    width: 80px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 42px;
+    flex-shrink: 0;
+  }
+  .header-body {
+    flex: 1;
+    padding: 22px 28px;
+  }
+  .header-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+  }
+  .header-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px; font-weight: 900;
+    color: #fff; line-height: 1.1;
+  }
+  .header-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+  }
+  .header-rappi {
+    display: flex; align-items: center;
+    padding: 0 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 22px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .header-rappi small {
+    display: block; font-size: 9px;
+    font-weight: 400; opacity: 0.65;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--card);
+    border-bottom: 3px solid var(--red);
+    display: flex;
+    overflow-x: auto; scrollbar-width: none;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .tab {
+    padding: 14px 22px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 700;
+    white-space: nowrap; text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: all 0.18s;
+  }
+  .tab:hover { color: var(--red); background: #fff5f5; }
+  .tab.active { color: var(--red); border-bottom-color: var(--red); background: var(--red-bg); }
+
+  /* ── LAYOUT ── */
+  .main { padding: 32px 40px 64px; max-width: 960px; margin: 0 auto; }
+  .section { display: none; animation: up 0.22s ease; }
+  .section.active { display: block; }
+  @keyframes up { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+  .sec-header {
+    border-bottom: 2px solid var(--red);
+    padding-bottom: 10px; margin-bottom: 20px;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .sec-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px; font-weight: 900;
+    color: var(--red);
+  }
+  .sec-desc { font-size: 12px; color: var(--muted); }
+
+  /* ── SEMAFORO CARDS ── */
+  .semaforo { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .scard {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--red);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .scard.ok { border-top-color: var(--green); }
+  .scard.warn { border-top-color: var(--amber); }
+  .scard.bad { border-top-color: var(--red); }
+  .scard-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .scard-value {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px; font-weight: 900;
+    line-height: 1;
+  }
+  .scard.ok .scard-value { color: var(--green); }
+  .scard.warn .scard-value { color: var(--amber); }
+  .scard.bad .scard-value { color: var(--red); }
+  .scard-sub { font-size: 11px; color: var(--muted); margin-top: 5px; line-height: 1.4; }
+  .scard-trend {
+    display: inline-flex; align-items: center;
+    font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px;
+    margin-top: 9px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .t-bad { background: var(--red-bg); color: var(--red); }
+  .t-ok { background: var(--green-bg); color: var(--green); }
+  .t-warn { background: var(--amber-bg); color: var(--amber); }
+
+  /* ── NARRATIVE BLOCK ── */
+  .narrative {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .narrative-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--muted); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .narrative-title::after {
+    content: ''; flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  /* ── FINDING (insight con semáforo) ── */
+  .finding {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .finding:last-child { border-bottom: none; padding-bottom: 0; }
+  .finding:first-child { padding-top: 0; }
+  .finding-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    flex-shrink: 0; margin-top: 5px;
+  }
+  .dot-red { background: var(--red); }
+  .dot-amber { background: var(--amber); }
+  .dot-green { background: var(--green); }
+  .finding-text { flex: 1; }
+  .finding-headline {
+    font-weight: 700; font-size: 14px;
+    margin-bottom: 3px; line-height: 1.3;
+  }
+  .finding-detail { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .finding-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px; font-weight: 900;
+    flex-shrink: 0; text-align: right;
+    min-width: 80px;
+  }
+
+  /* ── TWO COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* ── BAR CHART ── */
+  .chart-block {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .chart-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--muted); margin-bottom: 14px;
+  }
+  .bars { display: flex; flex-direction: column; gap: 8px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; }
+  .bar-lbl { font-size: 11px; color: var(--muted); min-width: 100px; text-align: right; }
+  .bar-track { flex: 1; background: #f0ece3; border-radius: 4px; height: 22px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .bar-num { font-size: 11px; font-weight: 700; min-width: 55px; }
+
+  /* ── TABLA SIMPLE ── */
+  .t-wrap { background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.05); overflow-x:auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: var(--red); }
+  th { padding: 11px 15px; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #fff; }
+  td { padding: 10px 15px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fdfaf5; }
+  .bdg { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+  .bd-g { background: var(--green-bg); color: var(--green); }
+  .bd-r { background: var(--red-bg); color: var(--red); }
+  .bd-o { background: var(--amber-bg); color: var(--amber); }
+
+  /* ── PLAN DE ACCIÓN ── */
+  .plan { display: flex; flex-direction: column; gap: 12px; }
+  .plan-item {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--red);
+    padding: 18px 20px;
+    display: flex; gap: 16px; align-items: flex-start;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .plan-item.p-orange { border-left-color: var(--orange); }
+  .plan-item.p-green { border-left-color: var(--green); }
+  .plan-item.p-blue { border-left-color: var(--blue); }
+  .plan-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--grad); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 900;
+    flex-shrink: 0;
+  }
+  .plan-content { flex: 1; }
+  .plan-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; margin-bottom: 4px; }
+  .plan-meta {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .plan-tag {
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .tag-now { background: var(--red-bg); color: var(--red); }
+  .tag-soon { background: var(--amber-bg); color: var(--amber); }
+  .tag-rappi { background: #eff6ff; color: var(--blue); }
+  .tag-joint { background: var(--green-bg); color: var(--green); }
+  .plan-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .plan-impact {
+    background: var(--green-bg);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px; font-weight: 600;
+    color: var(--green);
+    margin-top: 8px;
+    display: inline-block;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--red);
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    padding: 11px;
+    font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; letter-spacing: 0.8px;
+  }
+  .footer span { color: #fff; font-weight: 800; }
+
+  .divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .spacer { height: 16px; }
+
+  /* ── SCORECARD EJECUTIVO ── */
+  .scorecard {
+    background: var(--card);
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 24px;
+  }
+  .scorecard-header {
+    background: var(--grad);
+    padding: 14px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: #fff;
+  }
+  .scorecard-row {
+    display: flex; align-items: center;
+    padding: 13px 20px;
+    border-bottom: 1px solid var(--border);
+    gap: 14px;
+  }
+  .scorecard-row:last-child { border-bottom: none; }
+  .sc-metric { flex: 1; font-size: 13px; font-weight: 600; }
+  .sc-val { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; min-width: 80px; text-align: center; }
+  .sc-lm { font-size: 12px; color: var(--muted); min-width: 80px; text-align: center; }
+  .sc-ly { font-size: 12px; font-weight: 700; min-width: 80px; text-align: center; }
+  .sc-bench { font-size: 12px; color: var(--muted); min-width: 80px; text-align: center; }
+  .txt-red { color: var(--red); }
+  .txt-green { color: var(--green); }
+  .txt-amber { color: var(--amber); }
+
+  @media (max-width: 680px) {
+    .main { padding: 16px 14px 40px; }
+    .two-col { grid-template-columns: 1fr; }
+    .header-rappi { display: none; }
+    .header-title { font-size: 17px; }
+    .sc-lm, .sc-bench, .sc-ly { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-shamrock">☘️</div>
+  <div class="header-body">
+    <div class="header-eyebrow">Business Review · Enero 2026</div>
+    <div class="header-title">McCarthy's Irish Pub</div>
+    <div class="header-sub">Resultados del mes · Análisis · Plan de acción febrero</div>
+  </div>
+
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="tab active" onclick="show('resumen',this)">📋 Resumen</div>
+  <div class="tab" onclick="show('negocio',this)">📈 El Negocio</div>
+  <div class="tab" onclick="show('cliente',this)">👤 El Cliente</div>
+  <div class="tab" onclick="show('productos',this)">🍔 Productos</div>
+  <div class="tab" onclick="show('plan',this)">🚀 Plan de Acción</div>
+  <div class="tab" onclick="show('cierre',this)">🤝 Cierre & Compromisos</div>
+</nav>
+
+<div class="main">
+
+<!-- ═══════════════════════════════════════════════
+     1. RESUMEN EJECUTIVO
+═══════════════════════════════════════════════ -->
+<div id="resumen" class="section active">
+  <div class="sec-header">
+    <div class="sec-title">Resumen Ejecutivo</div>
+    <div class="sec-desc">Todo lo que necesitas saber de enero 2026</div>
+  </div>
+
+  <!-- Scorecard principal -->
+  <div class="scorecard">
+    <div class="scorecard-header">Indicadores clave · Enero 2026</div>
+    <div class="scorecard-row" style="background:#f8f9fa;">
+      <div class="sc-metric" style="color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;">Métrica</div>
+      <div class="sc-val" style="color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;">Enero</div>
+      <div class="sc-lm" style="color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;">vs Dic</div>
+      <div class="sc-ly" style="color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;">vs Ene '25</div>
+      <div class="sc-bench" style="color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;">Benchmark</div>
+    </div>
+    <div class="scorecard-row">
+      <div class="sc-metric">💰 Ventas netas</div>
+      <div class="sc-val">$423,851</div>
+      <div class="sc-lm txt-red">▼ -13%</div>
+      <div class="sc-ly txt-red">▼ -22%</div>
+      <div class="sc-bench">—</div>
+    </div>
+    <div class="scorecard-row">
+      <div class="sc-metric">📦 Órdenes</div>
+      <div class="sc-val">1,333</div>
+      <div class="sc-lm txt-red">▼ -11%</div>
+      <div class="sc-ly txt-red">▼ -21%</div>
+      <div class="sc-bench">—</div>
+    </div>
+    <div class="scorecard-row">
+      <div class="sc-metric">🎯 Ticket promedio</div>
+      <div class="sc-val">$318</div>
+      <div class="sc-lm txt-red">▼ -2%</div>
+      <div class="sc-ly txt-red">▼ -7%</div>
+      <div class="sc-bench txt-amber">$402</div>
+    </div>
+    <div class="scorecard-row">
+      <div class="sc-metric">📊 Participación de mercado</div>
+      <div class="sc-val">23.0%</div>
+      <div class="sc-lm txt-red">▼ -3.8pp</div>
+      <div class="sc-ly txt-red">▼ -2.3pp</div>
+      <div class="sc-bench">—</div>
+    </div>
+    <div class="scorecard-row">
+      <div class="sc-metric">🔄 Tasa de conversión</div>
+      <div class="sc-val">9.8%</div>
+      <div class="sc-lm txt-red">▼ -1.4pp</div>
+      <div class="sc-ly txt-amber">+0.4pp</div>
+      <div class="sc-bench txt-amber">14.3%</div>
+    </div>
+    <div class="scorecard-row">
+      <div class="sc-metric">👥 Clientes activos</div>
+      <div class="sc-val">2,251</div>
+      <div class="sc-lm txt-red">▼ -16%</div>
+      <div class="sc-ly txt-red">▼ -17%</div>
+      <div class="sc-bench">—</div>
+    </div>
+  </div>
+
+  <!-- Diagnóstico de 3 líneas -->
+  <div class="narrative">
+    <div class="narrative-title">Diagnóstico del mes</div>
+    <div class="finding">
+      <div class="finding-dot dot-red"></div>
+      <div class="finding-text">
+        <div class="finding-headline">Enero cierra por debajo del año pasado en todos los frentes</div>
+        <div class="finding-detail">Las ventas cayeron -22% vs enero 2025 y -13% vs diciembre. No es solo estacionalidad — la tendencia anual no está mejorando.</div>
+      </div>
+      <div class="finding-num txt-red">-22%<br><span style="font-size:11px;font-weight:500;color:var(--muted);">vs año ant.</span></div>
+    </div>
+    <div class="finding">
+      <div class="finding-dot dot-amber"></div>
+      <div class="finding-text">
+        <div class="finding-headline">El ticket promedio lleva 4 meses estancado, muy por debajo del mercado</div>
+        <div class="finding-detail">$318 promedio vs $402 del benchmark. Cada orden que cierra deja $84 de valor sobre la mesa. Con 1,333 órdenes, eso es ~$112K de oportunidad mensual.</div>
+      </div>
+      <div class="finding-num txt-amber">$84<br><span style="font-size:11px;font-weight:500;color:var(--muted);">gap vs bench</span></div>
+    </div>
+    <div class="finding">
+      <div class="finding-dot dot-amber"></div>
+      <div class="finding-text">
+        <div class="finding-headline">Se están perdiendo clientes recurrentes</div>
+        <div class="finding-detail">Los clientes que volvieron a pedir bajaron de 629 (nov) a 446 (ene). Son los más rentables y los más difíciles de recuperar una vez que se van.</div>
+      </div>
+      <div class="finding-num txt-amber">-29%<br><span style="font-size:11px;font-weight:500;color:var(--muted);">recurrentes</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     2. EL NEGOCIO
+═══════════════════════════════════════════════ -->
+<div id="negocio" class="section">
+  <div class="sec-header">
+    <div class="sec-title">El Negocio</div>
+    <div class="sec-desc">Ventas, órdenes y desempeño por sucursal</div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="semaforo" style="margin-bottom:20px;">
+    <div class="scard bad">
+      <div class="scard-label">Ventas enero</div>
+      <div class="scard-value">$423K</div>
+      <div class="scard-sub">Nov fue el mejor mes: $548K</div>
+      <div class="scard-trend t-bad">▼ -22% vs año pasado</div>
+    </div>
+    <div class="scard bad">
+      <div class="scard-label">Órdenes enero</div>
+      <div class="scard-value">1,333</div>
+      <div class="scard-sub">Dic: 1,500 · Nov: 1,721</div>
+      <div class="scard-trend t-bad">▼ -21% vs año pasado</div>
+    </div>
+    <div class="scard warn">
+      <div class="scard-label">Ticket promedio</div>
+      <div class="scard-value">$318</div>
+      <div class="scard-sub">Benchmark: $402 — gap de $84</div>
+      <div class="scard-trend t-warn">Estancado desde sep</div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="chart-block">
+      <div class="chart-label">Ventas mensuales — evolución 2025</div>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-lbl">Ene '25</div><div class="bar-track"><div class="bar-fill" style="width:93%;background:#7f9db5;">$512K</div></div><div class="bar-num" style="color:#7f9db5">$512K</div></div>
+        <div class="bar-row"><div class="bar-lbl">Abr (mín)</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:#ccc;">$322K</div></div><div class="bar-num" style="color:var(--muted)">$322K</div></div>
+        <div class="bar-row"><div class="bar-lbl">Oct</div><div class="bar-track"><div class="bar-fill" style="width:69%;background:#7f9db5;">$379K</div></div><div class="bar-num" style="color:var(--muted)">$379K</div></div>
+        <div class="bar-row"><div class="bar-lbl">Nov ⭐</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--green);">$548K</div></div><div class="bar-num" style="color:var(--green)">$548K</div></div>
+        <div class="bar-row"><div class="bar-lbl">Dic</div><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--orange);">$486K</div></div><div class="bar-num" style="color:var(--orange)">$486K</div></div>
+        <div class="bar-row"><div class="bar-lbl">Ene '26</div><div class="bar-track"><div class="bar-fill" style="width:77%;background:var(--red);">$423K</div></div><div class="bar-num" style="color:var(--red)">$423K</div></div>
+      </div>
+    </div>
+
+    <div class="narrative" style="margin:0;">
+      <div class="narrative-title">Lo que dicen los números</div>
+      <div class="finding">
+        <div class="finding-dot dot-red"></div>
+        <div class="finding-text">
+          <div class="finding-headline">La caída no es solo de enero</div>
+          <div class="finding-detail">En enero 2025 se vendieron ~$543K. Enero 2026 cierra en $423K. Se perdió el equivalente a 2 semanas de ventas respecto al año anterior.</div>
+        </div>
+      </div>
+      <div class="finding">
+        <div class="finding-dot dot-amber"></div>
+        <div class="finding-text">
+          <div class="finding-headline">Noviembre demuestra el potencial real</div>
+          <div class="finding-detail">Con $548K y 1,721 órdenes, el negocio sí puede rendir a ese nivel. El reto es sostenerlo, no solo en temporada alta.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sucursales: solo lo relevante -->
+  <div class="narrative" style="padding:0;overflow:hidden;">
+    <div style="background:var(--grad);padding:12px 20px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:1px;">
+      Sucursales · Venta neta enero 2026
+    </div>
+    <div class="t-wrap" style="border-radius:0;border:none;box-shadow:none;">
+      <table>
+        <thead><tr><th>Sucursal</th><th>Ciudad</th><th>Venta neta</th><th>Tendencia</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Playa del Carmen</strong></td><td>Playa del Carmen</td><td style="font-weight:800;color:var(--green);">$91,037</td><td><span class="bdg bd-g">▲ Creció</span></td></tr>
+          <tr><td>Amalucan</td><td>Puebla</td><td>$42,660</td><td><span class="bdg bd-r">▼ Decreció</span></td></tr>
+          <tr><td>Juárez</td><td>Puebla</td><td>$42,297</td><td><span class="bdg bd-o">● Estable</span></td></tr>
+          <tr><td>Lomas de Angelópolis</td><td>Puebla</td><td>$38,698</td><td><span class="bdg bd-r">▼ Decreció</span></td></tr>
+          <tr><td>Vista Alegre</td><td>Puebla</td><td>$37,394</td><td><span class="bdg bd-r">▼ Decreció</span></td></tr>
+          <tr><td>Huexotitla</td><td>Puebla</td><td>$36,345</td><td><span class="bdg bd-r">▼ Decreció</span></td></tr>
+          <tr><td>Atlixco</td><td>Atlixco</td><td>$32,445</td><td><span class="bdg bd-r">▼ Decreció</span></td></tr>
+          <tr><td>La Noria</td><td>Puebla</td><td>$29,833</td><td><span class="bdg bd-g">▲ Creció</span></td></tr>
+          <tr><td>Centro</td><td>Puebla</td><td>$21,305</td><td><span class="bdg bd-g">▲ Creció</span></td></tr>
+          <tr><td>Tuxtla Ambar</td><td>Tuxtla Gutiérrez</td><td>$19,798</td><td><span class="bdg bd-g">▲ Creció</span></td></tr>
+          <tr><td>Parque Puebla</td><td>Puebla</td><td>$16,658</td><td><span class="bdg bd-r">▼ Decreció</span></td></tr>
+          <tr><td>Tuxtla Vitta</td><td>Tuxtla Gutiérrez</td><td>$15,383</td><td><span class="bdg bd-g">▲ Creció</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="padding:14px 20px;background:#fdfaf5;border-top:1px solid var(--border);font-size:12px;color:var(--muted);">
+      <strong style="color:var(--text);">Lectura clave:</strong> Playa del Carmen representa el 21% de las ventas totales del grupo. 5 de 12 sucursales crecieron — la oportunidad está en reactivar las 7 que decrecieron, donde están concentradas las ubicaciones de Puebla.
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     3. EL CLIENTE
+═══════════════════════════════════════════════ -->
+<div id="cliente" class="section">
+  <div class="sec-header">
+    <div class="sec-title">El Cliente</div>
+    <div class="sec-desc">Cómo te encuentra, cómo decide y si vuelve</div>
+  </div>
+
+  <div class="semaforo" style="margin-bottom:20px;">
+    <div class="scard bad">
+      <div class="scard-label">Visitas a tu menú</div>
+      <div class="scard-value">10,858</div>
+      <div class="scard-sub">Personas que abrieron tu restaurante en Rappi este mes</div>
+      <div class="scard-trend t-bad">▼ -22% vs año pasado</div>
+    </div>
+    <div class="scard bad">
+      <div class="scard-label">De cada 100 visitas, ordenan…</div>
+      <div class="scard-value">9.8</div>
+      <div class="scard-sub">Benchmark del mercado: 14.3 de cada 100</div>
+      <div class="scard-trend t-bad">▼ 4.5 menos que el benchmark</div>
+    </div>
+    <div class="scard bad">
+      <div class="scard-label">Clientes que regresan</div>
+      <div class="scard-value">446</div>
+      <div class="scard-sub">En noviembre eran 629. Bajaron 183 en 2 meses.</div>
+      <div class="scard-trend t-bad">▼ -29% en 2 meses</div>
+    </div>
+  </div>
+
+  <div class="narrative">
+    <div class="narrative-title">La historia detrás de los números</div>
+    <div class="finding">
+      <div class="finding-dot dot-red"></div>
+      <div class="finding-text">
+        <div class="finding-headline">Menos gente llega y menos de los que llegan ordenan</div>
+        <div class="finding-detail">El tráfico cayó -22% vs el año pasado. Y de las personas que sí abren tu menú, solo 9.8 de cada 100 hacen un pedido — el mercado convierte 14.3. Esto sugiere que el menú, las fotos o la propuesta de valor no están enamorando al cliente cuando llega.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-dot dot-red"></div>
+      <div class="finding-text">
+        <div class="finding-headline">Los clientes frecuentes están desapareciendo</div>
+        <div class="finding-detail">De 3,237 clientes en noviembre bajamos a 2,251 en enero (-30%). Más preocupante: los que regresan cayeron de 629 a 446. Perder clientes recurrentes es la señal más cara — adquirir uno nuevo cuesta entre 5x y 7x más que retener uno.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="finding-dot dot-amber"></div>
+      <div class="finding-text">
+        <div class="finding-headline">El mercado también cayó, pero McCarthy's cayó más</div>
+        <div class="finding-detail">El tráfico de la categoría bajó -24% YoY — hay un efecto de mercado. Sin embargo, el market share pasó de 25.3% (ene '25) a 23.0% (ene '26), lo que indica que la competencia está capturando una parte de la demanda que antes era tuya.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     4. PRODUCTOS
+═══════════════════════════════════════════════ -->
+<div id="productos" class="section">
+  <div class="sec-header">
+    <div class="sec-title">Tus Productos</div>
+    <div class="sec-desc">Qué pide tu cliente y dónde está el dinero que se está dejando ir</div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="chart-block">
+      <div class="chart-label">Top 9 productos · Órdenes enero 2026</div>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-lbl">Alitas 12 pzas</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--red);">740</div></div><div class="bar-num" style="color:var(--red);">740</div></div>
+        <div class="bar-row"><div class="bar-lbl">20 Boneless</div><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--orange);">507</div></div><div class="bar-num" style="color:var(--orange);">507</div></div>
+        <div class="bar-row"><div class="bar-lbl">6 Dip Burgers</div><div class="bar-track"><div class="bar-fill" style="width:51%;background:var(--blue);">376</div></div><div class="bar-num" style="color:var(--blue);">376</div></div>
+        <div class="bar-row"><div class="bar-lbl">Wings And Fries</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:#7f9db5;">329</div></div><div class="bar-num" style="color:var(--muted);">329</div></div>
+        <div class="bar-row"><div class="bar-lbl">10 Boneless</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:#7f9db5;">299</div></div><div class="bar-num" style="color:var(--muted);">299</div></div>
+        <div class="bar-row"><div class="bar-lbl">Alitas 8 pzas</div><div class="bar-track"><div class="bar-fill" style="width:34%;background:#aaa;">255</div></div><div class="bar-num" style="color:var(--muted);">255</div></div>
+        <div class="bar-row"><div class="bar-lbl">Boneless & Fries</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:#aaa;">209</div></div><div class="bar-num" style="color:var(--muted);">209</div></div>
+        <div class="bar-row"><div class="bar-lbl">Combo Grandpa</div><div class="bar-track"><div class="bar-fill" style="width:26%;background:var(--green);">194</div></div><div class="bar-num" style="color:var(--green);">194</div></div>
+        <div class="bar-row"><div class="bar-lbl">4 Dip Burgers</div><div class="bar-track"><div class="bar-fill" style="width:23%;background:var(--green);">171</div></div><div class="bar-num" style="color:var(--green);">171</div></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="narrative" style="margin:0;flex:1;">
+        <div class="narrative-title">La oportunidad del ticket</div>
+        <div class="finding">
+          <div class="finding-dot dot-amber"></div>
+          <div class="finding-text">
+            <div class="finding-headline">Tus 3 productos más vendidos son unitarios</div>
+            <div class="finding-detail">Alitas 12 pzas, 20 Boneless y 6 Dip Burgers concentran el 27% de las órdenes — y generalmente se piden solos. Agregar una bebida o un complemento a estas órdenes podría mover el ticket de $318 hacia el benchmark de $402 sin cambiar nada de operación.</div>
+          </div>
+        </div>
+        <div class="finding">
+          <div class="finding-dot dot-green"></div>
+          <div class="finding-text">
+            <div class="finding-headline">Los combos ya están validados</div>
+            <div class="finding-detail">El Combo Grandpa Personal (194 órdenes) y los Dip Burgers en paquete demuestran que el cliente sí acepta combos. La palanca es darles más visibilidad y precio atractivo.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Cálculo de oportunidad -->
+      <div style="background:var(--green-bg);border:1px solid #c6e8d4;border-radius:12px;padding:18px 20px;">
+        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:var(--green);margin-bottom:10px;">📊 Oportunidad de ticket</div>
+        <div style="font-size:13px;color:var(--text);line-height:1.7;">
+          Si el ticket sube de <strong>$318</strong> a <strong>$360</strong> (+$42 por orden)<br>
+          con las mismas 1,333 órdenes de enero:<br><br>
+          <span style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:var(--green);">+$56,000</span>
+          <span style="font-size:12px;color:var(--muted);"> adicionales al mes</span><br>
+          <span style="font-size:11px;color:var(--muted);">sin necesidad de traer un solo cliente nuevo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     5. PLAN DE ACCIÓN
+═══════════════════════════════════════════════ -->
+<div id="plan" class="section">
+  <div class="sec-header">
+    <div class="sec-title">Plan de Acción · Febrero 2026</div>
+    <div class="sec-desc">Iniciativas priorizadas para revertir la tendencia · Período de ejecución: febrero–abril 2026</div>
+  </div>
+
+  <div class="plan">
+
+    <div class="plan-item">
+      <div class="plan-num">1</div>
+      <div class="plan-content">
+        <div class="plan-title">Activación de Demanda — Platos (Assortment) + Viral Deal</div>
+        <div class="plan-meta">
+          <span class="plan-tag tag-now">Inmediato</span>
+          <span class="plan-tag tag-rappi">Ejecución</span>
+        </div>
+        <div class="plan-desc">
+          Se propone la participación en dos eventos de visibilidad en plataforma con alcance a todos los usuarios, orientados a recuperar volumen de órdenes y reactivar la base inactiva.<br><br>
+          <strong>Platos (Assortment) · 20/02 al 31/03:</strong> Visibilidad en banners y carruseles. Descuento McCarthy's 40% + Descuento Rappi 20%.
+          <div style="margin-top:10px;background:#fdfaf5;border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:12px;">
+            <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:0.7px;color:var(--muted);">Productos sugeridos</span><br><br>
+            Se recomienda destacar los SKUs de mayor rotación y ticket alto: <strong>Alitas 12 Piezas</strong> (740 órdenes · 12.24% del total), <strong>20 Boneless</strong> (507 órdenes · 8.39%) y <strong>6 Dip Burgers</strong> (376 órdenes · 6.22%). Son los productos con mayor demanda probada y los que el cliente ya busca — maximizan la conversión de visibilidad a orden.
+          </div>
+          <br>
+          <strong>Viral Deal · 02/03 al 08/03:</strong> Visibilidad en banners y carruseles. Descuento McCarthy's 40% + Descuento Rappi 30%. Ambos eventos aplican a todos los usuarios de la plataforma.
+          <div style="margin-top:10px;background:#fdfaf5;border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:12px;">
+            <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:0.7px;color:var(--muted);">Productos sugeridos</span><br><br>
+            Para maximizar el impacto viral se recomienda un producto de entrada atractivo y ticket accesible: <strong>Wings And Fries</strong> (329 órdenes) y <strong>4 Dip Burgers</strong> (171 órdenes) son opciones con precio percibido como oferta. Complementar con el <strong>McCarthy's Combo Grandpa Personal</strong> (194 órdenes) para impulsar ticket promedio dentro de la misma campaña.
+          </div>
+        </div>
+        <div class="plan-impact">Objetivo: +200 órdenes incrementales vs enero · Recuperar nivel de >1,500 órdenes mensuales</div>
+      </div>
+    </div>
+
+    <div class="plan-item p-orange">
+      <div class="plan-num">2</div>
+      <div class="plan-content">
+        <div class="plan-title">Implementación Rappi Turbo — Fase Piloto</div>
+        <div class="plan-meta">
+          <span class="plan-tag tag-now">Febrero</span>
+          <span class="plan-tag tag-joint">Ejecución conjunta</span>
+        </div>
+        <div class="plan-desc">
+          Se identificaron 6 sucursales en Puebla con perfil operativo adecuado para la modalidad Turbo: La Noria, Juárez, Lomas de Angelópolis, Parque Puebla, Huexotitla y Centro. La recomendación es iniciar con <strong>Juárez (Puebla)</strong> como unidad piloto — segunda sucursal en volumen del grupo con $42,297 en enero — para validar flujos operativos y tiempos de entrega antes de escalar al grupo completo.<br><br>
+          <strong>Requerimientos operativos:</strong> Confirmación de horarios de servicio y designación de punto de contacto en la unidad seleccionada.
+        </div>
+        <div class="plan-impact">Proyección escenario optimista: +40% en órdenes Turbo · +234 órdenes adicionales en las 6 unidades</div>
+      </div>
+    </div>
+
+    <div class="plan-item p-green">
+      <div class="plan-num">3</div>
+      <div class="plan-content">
+        <div class="plan-title">Optimización de Ticket Promedio — Desarrollo de Oferta Combo</div>
+        <div class="plan-meta">
+          <span class="plan-tag tag-soon">Corto plazo</span>
+          <span class="plan-tag tag-joint">Ejecución conjunta</span>
+        </div>
+        <div class="plan-desc">
+          El ticket promedio de $318 acumula 4 meses de estancamiento frente a un benchmark de $402. El diferencial de $84 por orden no responde a una limitante de precio, sino a una oportunidad de desarrollo de oferta agrupada.<br><br>
+          <strong>Línea de acción:</strong> Diseño de 2–3 propuestas combo que combinen los SKUs de mayor rotación (Alitas 12 pzas, 20 Boneless) con bebida o complemento. El Combo Grandpa Personal (194 órdenes en enero) constituye un precedente válido para escalar el modelo.
+        </div>
+        <div class="plan-impact">Incremento de $42 en ticket promedio (de $318 a $360) genera ~$56K adicionales mensuales con el mismo volumen de órdenes</div>
+      </div>
+    </div>
+
+    <div class="plan-item p-blue">
+      <div class="plan-num">4</div>
+      <div class="plan-content">
+        <div class="plan-title">Estrategia de Retención — Reactivación de Base Recurrente</div>
+        <div class="plan-meta">
+          <span class="plan-tag tag-soon">Corto plazo</span>
+          <span class="plan-tag tag-rappi">Ejecución Rappi</span>
+        </div>
+        <div class="plan-desc">
+          La base de clientes recurrentes registró una contracción del 29% en el período noviembre–enero (de 629 a 446 usuarios). Se recomienda la activación de campañas de reactivación segmentadas hacia usuarios con última orden en los últimos 60 días.<br><br>
+          La iniciativa no implica inversión incremental — se trata de una reasignación del presupuesto publicitario existente hacia los segmentos de mayor eficiencia. Actualmente el 74% de la inversión se destina a clientes nuevos, cuya tasa de conversión es 3.7x inferior a la de los segmentos recurrentes.
+        </div>
+        <div class="plan-impact">Objetivo: recuperación de 150 clientes recurrentes en un horizonte de 60 días</div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     6. CIERRE & COMPROMISOS
+═══════════════════════════════════════════════ -->
+<div id="cierre" class="section">
+  <div class="sec-header">
+    <div class="sec-title">Cierre & Compromisos</div>
+    <div class="sec-desc">Si ejecutamos el plan juntos, esto es lo que puede pasar</div>
+  </div>
+
+  <!-- 1. GRÁFICA: la promesa visual -->
+  <div class="chart-block" style="margin-bottom:16px;">
+    <div class="chart-label" style="margin-bottom:6px;">Histórico de ventas + proyección 3 meses si se aplican las acciones</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:20px;">
+      <span style="display:inline-flex;align-items:center;gap:6px;">
+        <span style="width:20px;height:3px;background:#2471a3;display:inline-block;border-radius:2px;"></span>
+        Histórico real
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;">
+        <svg width="20" height="6"><line x1="0" y1="3" x2="20" y2="3" stroke="#27ae60" stroke-width="2.5" stroke-dasharray="5,3"/></svg>
+        Proyección (si se aplican acciones)
+      </span>
+    </div>
+    <canvas id="forecastChart" height="105"></canvas>
+    <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+      <div style="background:var(--green-bg);border:1px solid #c6e8d4;border-radius:10px;padding:14px 16px;text-align:center;">
+        <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--green);margin-bottom:4px;">Febrero</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--green);">~$495K</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Viral Deal + Turbo piloto · <strong>+17% vs enero</strong></div>
+      </div>
+      <div style="background:var(--green-bg);border:1px solid #c6e8d4;border-radius:10px;padding:14px 16px;text-align:center;">
+        <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--green);margin-bottom:4px;">Marzo</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--green);">~$530K</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Combos activos + retención · <strong>+7% vs feb</strong></div>
+      </div>
+      <div style="background:var(--green-bg);border:1px solid #c6e8d4;border-radius:10px;padding:14px 16px;text-align:center;">
+        <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--green);margin-bottom:4px;">Abril</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--green);">~$560K</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Turbo escalado + ticket ↑ · <strong>+6% vs mar</strong></div>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:var(--muted);font-style:italic;text-align:center;">
+      * Proyección basada en: Viral Deal (+15–20% órdenes), Turbo optimista (+40% en 6 suc.), ticket +$42, retención recurrentes. Escenario moderado-optimista.
+    </div>
+  </div>
+
+  <!-- 2. PUENTE narrativo -->
+  <div style="background:var(--grad);border-radius:10px;padding:16px 22px;margin-bottom:16px;display:flex;align-items:center;gap:14px;">
+    <div style="font-size:22px;flex-shrink:0;">🤝</div>
+    <div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:#fff;">Para llegar ahí, esto es lo que hace cada parte</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-top:2px;">Cada acción en el plan tiene un responsable claro. Abajo están los compromisos de Rappi y los que necesitamos de McCarthy's para que la proyección se cumpla.</div>
+    </div>
+  </div>
+
+  <!-- 3. COMPROMISOS lado a lado -->
+  <div class="narrative" style="margin:0;padding:0;overflow:hidden;margin-bottom:16px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;">
+
+      <!-- Rappi -->
+      <div style="padding:24px 26px 28px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+          <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#2471a3,#1a5276);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🔵</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--blue);">Rappi se compromete a:</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--blue-bg);border-radius:10px;padding:13px 15px;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">✅</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Activar Viral Deal · 02/03 al 08/03</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Dto. McCarthy's 40% + Dto. Rappi 30% · Banners y carruseles · Todos los usuarios</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--blue-bg);border-radius:10px;padding:13px 15px;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">✅</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Visibilidad Platos (Assortment) · 20/02 al 31/03</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Dto. McCarthy's 40% + Dto. Rappi 20% · Banners y carruseles · Todos los usuarios</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--blue-bg);border-radius:10px;padding:13px 15px;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">✅</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Optimizar Ads hacia recurrentes</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Redirigir presupuesto de nuevos → retenidos (ROAS 8.32x)</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--blue-bg);border-radius:10px;padding:13px 15px;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">✅</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Configurar piloto Rappi Turbo</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">1 sucursal en Puebla · Proyección +40% órdenes Turbo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- McCarthy's -->
+      <div style="padding:24px 26px 28px;border-left:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+          <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#ff6b35,#e8323c);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🟠</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;color:var(--orange);">McCarthy's nos ayuda con:</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--amber-bg);border-radius:10px;padding:13px 15px;border:1px solid #fde68a;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">📋</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Confirmar productos para el Viral Deal</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Validar SKUs sugeridos: Wings And Fries, 4 Dip Burgers y Combo Grandpa Personal</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--amber-bg);border-radius:10px;padding:13px 15px;border:1px solid #fde68a;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">📋</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Confirmar sucursal piloto para Turbo</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Unidad sugerida: <strong style="color:var(--text);">Juárez, Puebla</strong> — segunda en volumen del grupo con $42,297 en enero</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--amber-bg);border-radius:10px;padding:13px 15px;border:1px solid #fde68a;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">📋</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Validar horarios operativos</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Apertura/cierre de la sucursal piloto para configurar Turbo</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--amber-bg);border-radius:10px;padding:13px 15px;border:1px solid #fde68a;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">📋</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Proponer 2–3 combos nuevos con precio</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Alitas + bebida, Boneless + complemento — para subir ticket</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:11px;background:var(--amber-bg);border-radius:10px;padding:13px 15px;border:1px solid #fde68a;">
+            <span style="font-size:17px;flex-shrink:0;margin-top:1px;">📋</span>
+            <div>
+              <div style="font-weight:700;font-size:13px;">Revisar fotos de top sellers en menú</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Alitas 12 pzas, 20 Boneless y 6 Dip Burgers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. BANNER de cierre -->
+  <div style="background:var(--grad);border-radius:12px;padding:20px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.65);margin-bottom:4px;">Próxima revisión</div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:#fff;">Business Review Febrero 2026</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-top:2px;">Revisaremos: resultados Viral Deal, arranque Turbo y evolución del ticket promedio</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;">
+      <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.65);margin-bottom:4px;">Meta febrero</div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:#fff;">~$495K</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.8);">+$71K vs enero · +17%</div>
+    </div>
+  </div>
+</div>
+
+
+</div><!-- /main -->
+
+<div class="footer">
+  <span>→ Rappi</span> · Información Confidencial · Business Review McCarthy's Irish Pub · Enero 2026
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+function show(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (el && el.classList) el.classList.add('active');
+  if (id === 'cierre' && !window.chartBuilt) buildChart();
+}
+
+function buildChart() {
+  window.chartBuilt = true;
+  const ctx = document.getElementById('forecastChart').getContext('2d');
+
+  // Historical months labels
+  const labels = ['Ene\'25','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic','Ene\'26','Feb\'26','Mar\'26','Abr\'26'];
+
+  // Historical data (real values, nulls for future)
+  const historical = [512374,456571,432557,322259,401100,387875,364001,371549,360386,379712,548442,486018,423851,null,null,null];
+
+  // Projection: null for past, connects from Jan 2026 onwards
+  const projection = [null,null,null,null,null,null,null,null,null,null,null,null,423851,495000,530000,560000];
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Ventas reales',
+          data: historical,
+          borderColor: '#2471a3',
+          backgroundColor: 'rgba(36,113,163,0.08)',
+          borderWidth: 2.5,
+          pointRadius: 4,
+          pointBackgroundColor: '#2471a3',
+          pointHoverRadius: 6,
+          tension: 0.3,
+          fill: true,
+          spanGaps: false,
+        },
+        {
+          label: 'Proyección (con acciones)',
+          data: projection,
+          borderColor: '#27ae60',
+          backgroundColor: 'rgba(39,174,96,0.07)',
+          borderWidth: 2.5,
+          borderDash: [6, 4],
+          pointRadius: 4,
+          pointBackgroundColor: '#27ae60',
+          pointHoverRadius: 6,
+          tension: 0.3,
+          fill: true,
+          spanGaps: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1a1a1a',
+          titleFont: { family: 'Montserrat', weight: '700', size: 12 },
+          bodyFont: { family: 'Open Sans', size: 12 },
+          padding: 12,
+          callbacks: {
+            label: ctx => ctx.parsed.y !== null
+              ? `  ${ctx.dataset.label}: $${ctx.parsed.y.toLocaleString('es-MX')}`
+              : null
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(0,0,0,0.05)' },
+          ticks: { font: { family: 'Montserrat', size: 10, weight: '600' }, color: '#6b7280' }
+        },
+        y: {
+          grid: { color: 'rgba(0,0,0,0.06)' },
+          ticks: {
+            font: { family: 'Montserrat', size: 10 },
+            color: '#6b7280',
+            callback: v => '$' + (v/1000).toFixed(0) + 'K'
+          },
+          min: 250000,
+          max: 620000
+        }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
